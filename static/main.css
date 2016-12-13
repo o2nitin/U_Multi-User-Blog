@@ -2,10 +2,9 @@ body {
     position: relative;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
-
-    width: 800px;
+    background-color: #f0f5f5;
     margin: 0 auto;
-    padding: 10px;
+
     color: #333;
 }
 
@@ -45,27 +44,30 @@ label {
   font-size: 20px;
 }
 
-label + label {
-    margin-top: 20px;
+
+
+.text-muted {
+    color: #ea0931;
 }
 
-input[type=text] {
-    width: 500px;
-    font-size: 20px;
-    padding: 2px;
-    font-family: monospace;
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
-
 textarea {
   width: 500px;
   height: 400px;
   font-size: 17px;
   font-family: monospace;
 }
+.comment{
 
-input[type=submit] {
-  font-size: 24px;
+
 }
+
+/*input[type=submit] {
+  font-size: 24px;
+}*/
 
 .main-title {
     display: block;
@@ -98,10 +100,57 @@ input[type=submit] {
     color: #999;
 
 }
-
+.st0 {
+    fill: #02b3e4
+}
+#Layer_1 {
+    height: 100px;
+    width: 100px;
+}
 .post-content {
     margin-top: 5px;
 }
 .post-subject{
     text-decoration: none;
+}
+.blog-container{
+padding-left: 120px;
+padding-right: 120px;
+}
+.blog-header{
+  margin-bottom: 25px;
+  background-color: #e1eaea;
+  padding-top: 15px;
+}
+.blog-logo, .blog-title, .blog-account{
+
+}
+.blog-title{
+  font-size: 3em;
+  font-family: 'Oxygen', sans-serif;
+  padding-top: 10px;
+}
+.blog-title:hover {
+  font-weight: 700;
+  color: gray;
+}
+.title-link:hover{
+  text-decoration: none;
+}
+.blog-account{
+  height: 105px;
+  font-size: 25px;
+}
+.login-table{
+  width: 350px;
+  /*border: 1px solid black;*/
+}
+.login-table-tr > td{
+
+  /*border: 1px solid red;*/
+  padding: 10px;
+}
+@media (min-width: 1200px)
+.container {
+    width: 981px;
 }
