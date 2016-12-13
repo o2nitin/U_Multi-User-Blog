@@ -180,7 +180,7 @@ class PostPage(BlogHandler):
     def get(self, post_id):
         key = db.Key.from_path('Post', int(post_id), parent=blog_key())
         post = db.get(key)
-        comments = db.GqlQuery("select * from Comment where post_id = " +
+        comment = db.GqlQuery("select * from Comment where post_id = " +
                                post_id + " order by created desc")
 
         likes = db.GqlQuery("select * from Like where post_id="+post_id)
@@ -191,7 +191,7 @@ class PostPage(BlogHandler):
 
         error = self.request.get('error')
         self.render("permalink.html", post = post, noOfLikes=likes.count(),
-                    comments=comments, error=error)
+                    comments=comment, error=error)
 
     def post(self, post_id):
         key = db.Key.from_path('Post', int(post_id), parent=blog_key())
@@ -236,7 +236,7 @@ class PostPage(BlogHandler):
                           "performing edit, like or commenting.!!")
             return
 
-        comments = db.GqlQuery("select * from Comment where post_id = " +
+        comment = db.GqlQuery("select * from Comment where post_id = " +
                                post_id + "order by created desc")
 
         likes = db.GqlQuery("select * from Like where post_id="+post_id)
