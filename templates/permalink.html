@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if error %}
+
+                   err disply- {{error}}
+
+   {% endif %}
+  {{post.render() | safe}}
+
+  <form method="post" role="form">
+                <input type="hidden" class="form-control" id="like" name="like" value="update">
+                <button type="submit" class="btn btn-primary">Like {{noOfLikes}}</button>
+            </form>
+            <hr/>
+            <form method="post" role="form" class="comment-form">
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <input type="text" class="form-control" id="comment" name="comment" value="">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+            <hr/>
+            {% for c in comments %}
+            <blockquote>
+                <a class="comment-delete btn btn-danger pull-right" href="/blog/deletecomment/{{post.key().id()}}/{{c.key().id()}}">Delete</a>
+                <a class="comment-edit btn btn-primary pull-right" href="/blog/editcomment/{{post.key().id()}}/{{c.key().id()}}">Edit</a>
+                <p>{{ c.comment }}</p>
+                <footer>{{ c.getUserName() }}</footer>
+            </blockquote>
+            {% endfor %}
+  <div>################vvvvvvvvvvvv#</div>
+{% endblock %}
