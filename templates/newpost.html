@@ -1,21 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="col-sm-4 col-sm-offset-4">
   <h2>new post</h2>
+</div>
 
-    <form method="post">
-      <label>
-        <div>subject</div>
-        <input type="text" name="subject" value="{{subject}}">
-      </label>
+       <div class="col-md-12">
+        <form method="post" role="form">
 
-      <label>
-        <div>blog</div>
-        <textarea name="content">{{content}}</textarea>
-      </label>
+            <input type="hidden" id="post_id" name="post_id" value="{{post_id}}">
+            
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" id="subject" name="subject" value="{{subject}}">
+            </div>
+           
+            <div class="form-group">
+                <label for="content">Post Content:</label>
+                <textarea class="form-control" id="content" name="content" value="{{content}}" rows="10">{{content}}</textarea>
+            </div>
+           
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                {{error}}
+            </div>
+            {% endif %}
 
-      <div class="error">{{error}}</div>
-
-      <input type="submit">
-    </form>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
 {% endblock %}

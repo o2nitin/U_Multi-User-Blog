@@ -131,8 +131,8 @@ padding-right: 120px;
   padding-top: 10px;
 }
 .blog-title:hover {
-  font-weight: 700;
-  color: gray;
+  
+  color: black;
 }
 .title-link:hover{
   text-decoration: none;
@@ -149,6 +149,12 @@ padding-right: 120px;
 
   /*border: 1px solid red;*/
   padding: 10px;
+}
+.btn-cst{
+    color: gray;
+    font-style: italic;
+    font-size: 17px;
+    margin: 10px;
 }
 @media (min-width: 1200px)
 .container {

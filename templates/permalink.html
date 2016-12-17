@@ -4,20 +4,23 @@
 
   {% if error %}
 
-                   err disply- {{error}}
+    <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{error}}
+                </div>
 
    {% endif %}
 
 
+        <div>
   {{post.render() | safe}}
-  <div class="col-md-5">
-            <a id="post-delete" class="btn btn-danger pull-right" href="/deletepost/{{post.key().id()}}">Delete</a>
-            <a id="post-edit" class="btn btn-primary pull-right" href="/editpost/{{post.key().id()}}">Edit</a>
-        </div>
+  
 
   <form method="post" role="form">
                 <input type="hidden" class="form-control" id="like" name="like" value="update">
                 <button type="submit" class="btn btn-primary">Like {{noOfLikes}}</button>
+                 <a class="btn-cst pull-right" href="/deletepost/{{post.key().id()}}">Delete Post</a>
+                  <a class="btn-cst pull-right" href="/editpost/{{post.key().id()}}">Edit Post</a> 
             </form>
             <hr/>
             <form method="post" role="form" class="comment-form">
@@ -37,5 +40,6 @@
                 <footer>{{ c.getUserName() }}</footer>
             </blockquote>
             {% endfor %}
+        </div>
 
 {% endblock %}

@@ -466,7 +466,7 @@ class Login(BlogHandler):
         This class heandle the login for the blog
     """
     def get(self):
-        self.render('login-form.html')
+        self.render('login-form.html', error=self.request.get('error'))
 
     def post(self):
         username = self.request.get('username')
