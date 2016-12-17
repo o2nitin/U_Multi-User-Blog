@@ -7,7 +7,13 @@
                    err disply- {{error}}
 
    {% endif %}
+
+
   {{post.render() | safe}}
+  <div class="col-md-5">
+            <a id="post-delete" class="btn btn-danger pull-right" href="/deletepost/{{post.key().id()}}">Delete</a>
+            <a id="post-edit" class="btn btn-primary pull-right" href="/editpost/{{post.key().id()}}">Edit</a>
+        </div>
 
   <form method="post" role="form">
                 <input type="hidden" class="form-control" id="like" name="like" value="update">
@@ -24,6 +30,9 @@
             <hr/>
             {% for c in comments %}
             <blockquote class="comment">
+                  <a class="comment-delete btn btn-danger pull-right" href="/deletecomment/{{post.key().id()}}/{{c.key().id()}}">Delete</a>
+                <a class="comment-edit btn btn-primary pull-right" href="/editcomment/{{post.key().id()}}/{{c.key().id()}}">Edit</a>
+                
                 <p>{{ c.comment }}</p>
                 <footer>{{ c.getUserName() }}</footer>
             </blockquote>

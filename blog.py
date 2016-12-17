@@ -271,6 +271,117 @@ class NewPost(BlogHandler):
                         content=content, error=error)
 
 
+class DeletePost(BlogHandler):
+    def get(self, post_id):
+        if self.user:
+            key = db.Key.from_path('Post', int(post_id), parent=blog_key())
+            post = db.get(key)
+            if post.user_id == self.user.key().id():
+                post.delete()
+                self.redirect("/?deleted_post_id="+post_id)
+            else:
+                self.redirect("/" + post_id + "?error=You don't have " +
+                              "access to delete this record.")
+        else:
+            self.redirect("/login?error=You need to be logged, in order" +
+                          " to delete your post!!")
+
+
+class EditPost(BlogHandler):
+    def get(self, post_id):
+        if self.user:
+            key = db.Key.from_path('Post', int(post_id), parent=blog_key())
+            post = db.get(key)
+            if post.user_id == self.user.key().id():
+                self.render("editpost.html", subject=post.subject,
+                            content=post.content)
+            else:
+                self.redirect("/" + post_id + "?error=You don't have " +
+                              "access to edit this record.")
+        else:
+            self.redirect("/login?error=You need to be logged, " +
+                          "in order to edit your post!!")
+
+    def post(self, post_id):
+        """
+            Updates post.
+        """
+        if not self.user:
+            self.redirect('/')
+
+        subject = self.request.get('subject')
+        content = self.request.get('content')
+
+        if subject and content:
+            key = db.Key.from_path('Post', int(post_id), parent=blog_key())
+            post = db.get(key)
+            post.subject = subject
+            post.content = content
+            post.put()
+            self.redirect('/%s' % post_id)
+        else:
+            error = "subject and content, please!"
+            self.render("editpost.html", subject=subject,
+                        content=content, error=error)
+
+
+class DeleteComment(BlogHandler):
+
+    def get(self, post_id, comment_id):
+        if self.user:
+            key = db.Key.from_path('Comment', int(comment_id),
+                                   parent=blog_key())
+            c = db.get(key)
+            if c.user_id == self.user.key().id():
+                c.delete()
+                self.redirect("/"+post_id+"?deleted_comment_id=" +
+                              comment_id)
+            else:
+                self.redirect("/" + post_id + "?error=You don't have " +
+                              "access to delete this comment.")
+        else:
+            self.redirect("/login?error=You need to be logged, in order to " +
+                          "delete your comment!!")
+
+
+class EditComment(BlogHandler):
+    def get(self, post_id, comment_id):
+        if self.user:
+            key = db.Key.from_path('Comment', int(comment_id),
+                                   parent=blog_key())
+            c = db.get(key)
+            if c.user_id == self.user.key().id():
+                self.render("editcomment.html", comment=c.comment)
+            else:
+                self.redirect("/" + post_id +
+                              "?error=You don't have access to edit this " +
+                              "comment.")
+        else:
+            self.redirect("/login?error=You need to be logged, in order to" +
+                          " edit your post!!")
+
+    def post(self, post_id, comment_id):
+        """
+            Updates post.
+        """
+        if not self.user:
+            self.redirect('/blog')
+
+        comment = self.request.get('comment')
+
+        if comment:
+            key = db.Key.from_path('Comment',
+                                   int(comment_id), parent=blog_key())
+            c = db.get(key)
+            c.comment = comment
+            c.put()
+            self.redirect('/%s' % post_id)
+        else:
+            error = "subject and content, please!"
+            self.render("editpost.html", subject=subject,
+                        content=content, error=error)
+
+
 # regular expression for validating username
 USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
 
@@ -379,6 +490,12 @@ class Logout(BlogHandler):
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/([0-9]+)', PostPage),
                                ('/newpost', NewPost),
+                                ('/deletepost/([0-9]+)', DeletePost),
+                               ('/editpost/([0-9]+)', EditPost),
+                               ('/deletecomment/([0-9]+)/([0-9]+)',
+                                DeleteComment),
+                               ('/editcomment/([0-9]+)/([0-9]+)',
+                                EditComment),
                                ('/signup', Register),
                                ('/login', Login),
                                ('/logout', Logout),
