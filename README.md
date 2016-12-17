@@ -1,4 +1,4 @@
-#  Multi User Blod
+#  Multi User Blog
 
 Blog: https://multi-blog-152418.appspot.com/
 
