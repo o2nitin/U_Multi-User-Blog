@@ -18,14 +18,14 @@
 
   <form method="post" role="form">
                 <input type="hidden" class="form-control" id="like" name="like" value="update">
-                <button type="submit" class="btn btn-primary">Like {{noOfLikes}}</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Like {{noOfLikes}}</button>
                  <a class="btn-cst pull-right" href="/deletepost/{{post.key().id()}}">Delete Post</a>
                   <a class="btn-cst pull-right" href="/editpost/{{post.key().id()}}">Edit Post</a> 
             </form>
             <hr/>
             <form method="post" role="form" class="comment-form">
                 <div class="form-group">
-                    <label for="comment">Comment:</label>
+                    <label for="comment"><i class="fa fa-comments" aria-hidden="true"></i>Comment:</label>
                     <input type="text" class="form-control" id="comment" name="comment" value="">
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>

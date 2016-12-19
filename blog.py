@@ -294,7 +294,7 @@ class EditPost(BlogHandler):
             post = db.get(key)
             if post.user_id == self.user.key().id():
                 self.render("editpost.html", subject=post.subject,
-                            content=post.content)
+                            content=post.content,post_id=post_id)
             else:
                 self.redirect("/" + post_id + "?error=You don't have " +
                               "access to edit this record.")
@@ -351,7 +351,7 @@ class EditComment(BlogHandler):
                                    parent=blog_key())
             c = db.get(key)
             if c.user_id == self.user.key().id():
-                self.render("editcomment.html", comment=c.comment)
+                self.render("editcomment.html", comment=c.comment,post_id=post_id)
             else:
                 self.redirect("/" + post_id +
                               "?error=You don't have access to edit this " +
@@ -423,7 +423,7 @@ class Signup(BlogHandler):
                       email = self.email)
 
         if not valid_username(self.username):
-            params['error_username'] = "That's not a valid username."
+            params['error_username'] = "Invalid username."
             have_error = True
 
         if not valid_password(self.password):
@@ -434,7 +434,7 @@ class Signup(BlogHandler):
             have_error = True
 
         if not valid_email(self.email):
-            params['error_email'] = "That's not a valid email."
+            params['error_email'] = "Invalid email."
             have_error = True
 
         if have_error:
