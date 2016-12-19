@@ -4,10 +4,8 @@ body {
     font-size: 14px;
     background-color: #f0f5f5;
     margin: 0 auto;
-
     color: #333;
 }
-
 .login-area {
     font-size: 13px;
     color: gray;
@@ -15,60 +13,41 @@ body {
     top: 10px;
     right: 10px;
 }
-
 .login-link {
     color: gray;
     text-decoration: none;
 }
-
 .login-link:visited {
     color: gray;
 }
-
 .login-link:hover {
     text-decoration: underline;
 }
-
 h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
-
 .error {
     color: red;
 }
-
 label {
-  display: block;
-  font-size: 20px;
+    display: block;
+    font-size: 20px;
 }
-
-
-
 .text-muted {
     color: #ea0931;
 }
-
-.col-centered{
+.col-centered {
     float: none;
     margin: 0 auto;
 }
 textarea {
-  width: 500px;
-  height: 400px;
-  font-size: 17px;
-  font-family: monospace;
+    width: 500px;
+    height: 400px;
+    font-size: 17px;
+    font-family: monospace;
 }
-.comment{
-
-
-}
-
-/*input[type=submit] {
-  font-size: 24px;
-}*/
-
 .main-title {
     display: block;
     color: #222;
@@ -78,27 +57,22 @@ textarea {
     margin-bottom: 30px;
     text-decoration: none;
 }
-
 .post + .post {
     margin-top: 15px;
 }
-
 .post-heading {
     position: relative;
     border-bottom: 3px solid #666;
 }
-
 .post-title {
     font-size: 24px;
     font-weight: bold;
 }
-
 .post-date {
     position: absolute;
     right: 0px;
     bottom: 0px;
     color: #999;
-
 }
 .st0 {
     fill: #02b3e4
@@ -110,74 +84,67 @@ textarea {
 .post-content {
     margin-top: 5px;
 }
-.post-subject{
+.post-subject {
     text-decoration: none;
 }
-.blog-container{
-margin-left: 120px;
-margin-right: 120px;
-box-shadow: 1px 10px 5px #888888;
+.blog-container {
+    margin-left: 120px;
+    margin-right: 120px;
+    box-shadow: 1px 10px 5px #888888;
 }
-.blog-header{
-  margin-bottom: -2px;
-  
-  padding-top: 15px;
-  height: 127px;
-  background-color: #2e3d49;
+.blog-header {
+    margin-bottom: -2px;
+    padding-top: 15px;
+    height: 127px;
+    background-color: #2e3d49;
     color: cornsilk;
-  box-shadow: 1px 4px 10px #888960;
+    box-shadow: 1px 4px 10px #888960;
 }
-.blog-header-int{
+.blog-header-int {
     margin-left: 90px;
     margin-right: 90px;
-    
 }
-.content-block{
+.content-block {
     padding: 30px;
     padding-left: 60px;
     padding-right: 60px;
     min-height: 500px;
-   
 }
-.blog-logo, .blog-title, .blog-account{
-
-}
-.blog-title{
-  font-size: 3em;
-  font-family: 'Oxygen', sans-serif;
-  padding-top: 10px;
+.blog-title {
+    font-size: 3em;
+    font-family: 'Oxygen', sans-serif;
+    padding-top: 10px;
 }
 .blog-title:hover {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 .blog-title > a {
     color: white;
     text-decoration: none;
 }
-.title-link:hover{
-  text-decoration: none;
+.title-link:hover {
+    text-decoration: none;
 }
-.blog-account{
-  height: 105px;
-  font-size: 25px;
+.blog-account {
+    height: 105px;
+    font-size: 25px;
 }
-.login-table{
-  width: 350px;
-  /*border: 1px solid black;*/
+.login-table {
+    width: 350px;
+    /*border: 1px solid black;*/
 }
-.login-table-tr > td{
-
-  /*border: 1px solid red;*/
-  padding: 10px;
+.login-table-tr > td {
+    /*border: 1px solid red;*/
+    
+    padding: 10px;
 }
-.btn-cst{
+.btn-cst {
     color: gray;
     font-style: italic;
     font-size: 17px;
     margin: 10px;
 }
-@media (min-width: 1200px)
-.container {
+@media (min-width: 1200px) .container {
     width: 981px;
 }
